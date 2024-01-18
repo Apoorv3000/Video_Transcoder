@@ -4,19 +4,22 @@ import path from "path";
 import fs from "fs";
 
 const getUploadDirectoryPath = (filename: string) => {
-	return path.join(__dirname, "../uploads", filename);
+	return path.join(__dirname, "../videos/raw");
 };
 
 const ensureUploadDirPathExist = (filename: string) => {
 	const dirPath = getUploadDirectoryPath(filename);
+	console.log(dirPath);
 	if (!fs.existsSync(dirPath)) {
-		fs.mkdirSync(dirPath);
+		console.log("Directory does not exist");
+		fs.mkdirSync(dirPath, { recursive: true });
 	}
 };
 
 const storage = multer.diskStorage({
 	destination: (req: Request, file: Express.Multer.File, cb) => {
 		const fileSpecificFolder = file.originalname.split(path.extname(file.originalname))[0];
+		console.log(fileSpecificFolder);
 		ensureUploadDirPathExist(fileSpecificFolder);
 		cb(null, getUploadDirectoryPath(fileSpecificFolder));
 	},
