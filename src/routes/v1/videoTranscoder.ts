@@ -4,4 +4,6 @@ import { uploadFile } from "../../middleware/uploadFile";
 
 const router = Router();
 
-router.post("/upload", uploadFile, VideoController.uploadVideo);
+router.post("/upload", uploadFile.single("file"), VideoController.uploadVideo);
+
+export default router;
