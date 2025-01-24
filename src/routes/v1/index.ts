@@ -1,7 +1,8 @@
 import { Router } from "express";
+import video from "./videoTranscoder";
 
-const router = Router();
+const router = Router({ mergeParams: true });
 
-router.use("/video");
+router.use("/video", video);
 
 export default router;
