@@ -7,6 +7,7 @@ const getUploadDirectoryPath = (filename: string) => {
 	return path.join(__dirname, "../videos/raw");
 };
 
+
 const ensureUploadDirPathExist = (filename: string) => {
 	const dirPath = getUploadDirectoryPath(filename);
 	console.log(dirPath);
