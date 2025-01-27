@@ -16,6 +16,7 @@ const ensureUploadDirPathExist = (filename: string) => {
 		console.log("Directory does not exist");
 		fs.mkdirSync(dirPath, { recursive: true });
 	}
+	
 };
 
 const storage = multer.diskStorage({
